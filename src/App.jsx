@@ -8,9 +8,6 @@ import { fetchPictures } from './lib/api'
 import BreedList from './components/BreedList'
 import DogCardInfo from './components/DogCardInfo'
 
-const {SNOWPACK_PUBLIC_DOG_API_KEY} = __SNOWPACK_ENV__
-console.log(SNOWPACK_PUBLIC_DOG_API_KEY)
-
 function App() {
   const [pictures, setPictures] = useState([])
   const [selectedBreedId, setSelectedBreedId] = useState('')
