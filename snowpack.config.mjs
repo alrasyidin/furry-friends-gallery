@@ -22,8 +22,4 @@ export default {
   buildOptions: {
     /* ... */
   },
-  env: {
-    DOG_API_URL:'https://api.thedogapi.com/v1/',
-    DOG_API_KEY:'8aca90db-abdc-448b-9d0c-62cfcbe41099'
-  },
-};
+}

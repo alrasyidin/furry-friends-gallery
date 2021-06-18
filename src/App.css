@@ -1,8 +1,8 @@
-.cat-card .card-image{
+.card-dog .card-image{
 	height: 15em;
 }
 
-.cat-card .image{
+.card-dog .image{
 	height: 100%;
 	background-repeat: no-repeat;
 	background-position: top center;
@@ -17,4 +17,9 @@
 
 .breed-list .radio input{
 	margin-right: .5em;
+}
+
+.pagination a:disabled{
+	color: #999;
+	cursor: not-allowed
 }

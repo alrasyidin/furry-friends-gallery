@@ -1,3 +1,5 @@
+import React, { useState } from 'react'
+
 const DogCardInfo = ({ imgUrl, pictureId }) => {
   return (
     <div className="card card-dog">

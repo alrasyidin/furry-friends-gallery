@@ -1,12 +1,13 @@
+import React from 'react'
 import axios from 'axios'
 
-const { API_URL, API_KEY } = __SNOWPACK_ENV__
+const { SNOWPACK_PUBLIC_DOG_API_URL, SNOWPACK_PUBLIC_DOG_API_KEY} = import.meta.env
 
-const _callApi = (url, params = null) => {
+const _callApi = async (url, params = null) => {
   const requestConfig = {
-    baseUrl: API_URL,
+    baseURL: SNOWPACK_PUBLIC_DOG_API_URL,
     headers: {
-      'x-api-key': API_KEY,
+      'x-api-key': SNOWPACK_PUBLIC_DOG_API_KEY,
     },
     url,
   }
@@ -14,7 +15,7 @@ const _callApi = (url, params = null) => {
   if (params) {
     requestConfig.params = params
   }
-
+  console.log(requestConfig)
   try {
     return await axios(requestConfig)
   } catch (error) {
@@ -23,25 +24,23 @@ const _callApi = (url, params = null) => {
 }
 
 export const fetchBreeds = async (page, limit = 10) => {
-	const breeds = await _callApi('breeds', {
-		limit, page
-	})
+const breeds = await _callApi('breeds', {
+    limit,
+    page,
+  })
 
-	return {
-		breeds: breeds.data,
-		totalBreeds: breeds.header['pagination-count']
-	}
+  return {
+    breeds: breeds.data,
+    totalBreeds: breeds.headers['pagination-count'],
+  }
 }
 
 export const fetchPictures = async (breed = '', limit = 20) => {
-	if (breed === '') {
-		return []
-	}
-
-	const pictures = await _callApi('images/search', {
-		limit,
-		breed_id: breed
-	})
-
-	return pictures.data
+  if (breed === '') {
+    return []
+  }
+  const pictures = await _callApi('images/search', {
+    breed, limit
+  })
+  return pictures.data
 }
